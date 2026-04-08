@@ -43,24 +43,32 @@
 
       <!-- ====== GALERIA ====== -->
       <div class="detail__gallery" id="detailGallery">
-        <div class="detail__gallery-main">
+        <div class="detail__gallery-main" id="galleryMainWrapper">
           <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop" alt="Fachada principal" id="galleryMainImage">
+          <button class="gallery-arrow gallery-arrow--prev" id="galleryPrev" aria-label="Imagem anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg>
+          </button>
+          <button class="gallery-arrow gallery-arrow--next" id="galleryNext" aria-label="Imagem seguinte">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
           <span class="gallery-counter" id="galleryCounter">1 / 5</span>
         </div>
-        <div class="detail__gallery-thumb active" data-img="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop">
-          <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Thumb 1" loading="lazy">
-        </div>
-        <div class="detail__gallery-thumb" data-img="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop">
-          <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop" alt="Thumb 2" loading="lazy">
-        </div>
-        <div class="detail__gallery-thumb" data-img="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop" alt="Thumb 3" loading="lazy">
-        </div>
-        <div class="detail__gallery-thumb" data-img="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop">
-          <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&h=300&fit=crop" alt="Thumb 4" loading="lazy">
-        </div>
-        <div class="detail__gallery-thumb" data-img="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop">
-          <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop" alt="Thumb 5" loading="lazy">
+        <div class="detail__gallery-thumbs" id="galleryThumbs">
+          <div class="detail__gallery-thumb active" data-index="0">
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=400&h=300&fit=crop" alt="Thumb 1" loading="lazy">
+          </div>
+          <div class="detail__gallery-thumb" data-index="1">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&h=300&fit=crop" alt="Thumb 2" loading="lazy">
+          </div>
+          <div class="detail__gallery-thumb" data-index="2">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&h=300&fit=crop" alt="Thumb 3" loading="lazy">
+          </div>
+          <div class="detail__gallery-thumb" data-index="3">
+            <img src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=400&h=300&fit=crop" alt="Thumb 4" loading="lazy">
+          </div>
+          <div class="detail__gallery-thumb" data-index="4">
+            <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&h=300&fit=crop" alt="Thumb 5" loading="lazy">
+          </div>
         </div>
       </div>
 

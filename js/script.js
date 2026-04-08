@@ -152,25 +152,54 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================
-  //   DETAIL GALLERY
+  //   DETAIL GALLERY (carousel)
   // ========================================
-  const thumbs = document.querySelectorAll('.detail__gallery-thumb');
+  const galleryImages = [
+    'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&h=800&fit=crop',
+    'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1200&h=800&fit=crop'
+  ];
+
   const mainImage = document.getElementById('galleryMainImage');
   const galleryCounter = document.getElementById('galleryCounter');
+  const prevBtn = document.getElementById('galleryPrev');
+  const nextBtn = document.getElementById('galleryNext');
+  const thumbs = document.querySelectorAll('.detail__gallery-thumb');
+  const thumbsContainer = document.getElementById('galleryThumbs');
   let currentImg = 0;
 
-  if (thumbs.length && mainImage) {
-    function updateGallery(idx) {
-      currentImg = idx;
-      mainImage.src = thumbs[idx].dataset.img;
-      thumbs.forEach((t, i) => t.classList.toggle('active', i === idx));
-      if (galleryCounter) {
-        galleryCounter.textContent = `${idx + 1} / ${thumbs.length}`;
-      }
+  function updateGallery(idx) {
+    currentImg = (idx + galleryImages.length) % galleryImages.length;
+    mainImage.style.opacity = '0';
+    setTimeout(() => {
+      mainImage.src = galleryImages[currentImg];
+      mainImage.style.opacity = '1';
+    }, 150);
+    thumbs.forEach((t, i) => t.classList.toggle('active', i === currentImg));
+    if (galleryCounter) {
+      galleryCounter.textContent = `${currentImg + 1} / ${galleryImages.length}`;
     }
+    // Scroll active thumb into view
+    if (thumbs[currentImg] && thumbsContainer) {
+      thumbs[currentImg].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+  }
 
+  if (mainImage) {
     thumbs.forEach((thumb, i) => {
       thumb.addEventListener('click', () => updateGallery(i));
+    });
+
+    if (prevBtn) prevBtn.addEventListener('click', () => updateGallery(currentImg - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => updateGallery(currentImg + 1));
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!document.getElementById('detailGallery')) return;
+      if (e.key === 'ArrowLeft') updateGallery(currentImg - 1);
+      if (e.key === 'ArrowRight') updateGallery(currentImg + 1);
     });
   }
 
